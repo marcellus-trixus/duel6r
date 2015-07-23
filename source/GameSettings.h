@@ -25,8 +25,8 @@
 * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#ifndef DUEL6R_GAMESETTINGS_H
-#define DUEL6R_GAMESETTINGS_H
+#ifndef DUEL6_GAMESETTINGS_H
+#define DUEL6_GAMESETTINGS_H
 
 #include <utility>
 #include "Type.h"
@@ -44,11 +44,12 @@ namespace Duel6
 		bool wireframe;
 		bool showFps;
 		bool showRanking;
+		bool ghostMode;
 
 	public:
 		GameSettings()
 			: ammoRange(15, 15), maxRounds(0), screenMode(ScreenMode::FullScreen),
-			  screenZoom(13), wireframe(false), showFps(false), showRanking(true)
+			  screenZoom(13), wireframe(false), showFps(false), showRanking(true), ghostMode(true)
 		{}
 
 		ScreenMode getScreenMode() const
@@ -98,6 +99,17 @@ namespace Duel6
 		{
 			this->maxRounds = maxRounds;
 			return *this;
+		}
+
+		GameSettings& setGhostEnabled(bool enabled)
+		{
+			this->ghostMode = enabled;
+			return *this;
+		}
+
+		bool getGhostEnabled()
+		{
+			return this->ghostMode;
 		}
 
 		bool isWireframe() const
